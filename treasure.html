@@ -16,9 +16,10 @@
 <body>
 <h1 style="padding: 10px;text-align:center">Treasure hunt by Kalyanam Lakshmi Sowjanya </h1>
 <p style="padding: 10px;text-align:center">Click on the chests to search for treasure</p>
-<p id="chests" style="padding:10px;text-align: center;">Number of chests checked is zero</p>s
+<p id="chests" style="padding:10px;text-align: center;">Number of chests checked is zero</p>
 <p id="score" style="padding:10px;text-align: center;">Score is unknown.</p>
 <p id="help" style="padding:10px;text-align: center;">Help report</p>
+
 <div class="row" style="padding-left: 200px;" >
   <div class="col-md-2"><img onclick = "check(0)" id="treasureImg0" src="Empty-treasure.png" alt="treasurebox" style="width: 90px;height:90;"></div>
   <div class="col-md-2"><img onclick = "check(1)" id="treasureImg1" src="Empty-treasure.png" alt="treasurebox" style="width: 90px;height:90;"></div>
@@ -54,6 +55,7 @@
   <div class="col-md-2"><img onclick = "check(23)" id="treasureImg23" src="Empty-treasure.png" alt="treasurebox" style="width: 90px;height:90;"></div>
   <div class="col-md-2"><img onclick = "check(24)" id="treasureImg4" src="Empty-treasure.png" alt="treasurebox" style="width: 90px;height:90;"></div>
 </div>
+<button class="btn btn-primary" id="game_button" onclick="reset()">Swap</button>
 <script>
   var ids=["treasureImg0","treasureImg1","treasureImg2","treasureImg3","treasureImg4","treasureImg5","treasureImg6","treasureImg7","treasureImg8","treasureImg9","treasureImg10","treasureImg11","treasureImg12","treasureImg13","treasureImg14","treasureImg15","treasureImg16","treasureImg17","treasureImg18","treasureImg19","treasureImg20","treasureImg21","treasureImg22","treasureImg23","treasureImg24"]
   var chestCount=0
@@ -66,7 +68,7 @@
     }
     else{
       document.getElementById(ids[position]).src="Empty_TresureChest.jpg"
-    }ss
+    }
     chestCount=chestCount+1
     score=score+1
     chests=document.getElementById("chests")
@@ -76,6 +78,19 @@
     lastCheck = positions
 
   }
+  function reset(){
+    treasureLocation= Math.floor(Math.random() * 24)
+    var chestCount=0
+     var score=0
+  lastCheck=5
+  chests=document.getElementById("chests")
+    chests.innerHTML="Number of chests checked is "+chestCount
+    scoretext=document.getElementById("score")
+    scoretext.innerHTML="Score is "+score
+    
+
+  }
+  
   function help(){
       rowLC=parseInt(lastCheck/5)
       colLC=parseInt(lastCheck%5)
